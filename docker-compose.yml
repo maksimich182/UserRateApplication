@@ -1,0 +1,45 @@
+version: '3.9'
+
+services:
+
+  # migration-service-migrator:
+  #   build:
+  #       context: .
+  #       dockerfile: src/MigrationService/Dockerfile
+  #   container_name: migration-service-migrator
+  #   depends_on:
+  #       - user-concurrency-db
+  #   ports:
+  #       - "5081:8080"
+  #   environment:
+  #     - ConnectionStrings:UserConcurrencyDb=Port=5432;Host=user-concurrency-db;Database=user-concurrency-db;Username=test;Password=test
+  #   command: migrate up
+
+  migration-service-filler:
+    build:
+        context: .
+        dockerfile: src/MigrationService/Dockerfile
+    container_name: migration-service-filler
+    depends_on:
+        - user-concurrency-db
+    ports:
+        - "5081:8080"
+    environment:
+      - ConnectionStrings:UserConcurrencyDb=Port=5432;Host=user-concurrency-db;Database=user-concurrency-db;Username=test;Password=test
+
+  user-concurrency-db:
+    image: postgres:latest
+    container_name: user-concurrency-db
+    environment:
+      - POSTGRES_DB=user-concurrency-db
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=test 
+    ports:
+      - "5181:5432"
+    volumes:
+      - user-concurrency-db:/var/lib/postgresql/data
+
+volumes:
+
+  user-concurrency-db:
+    name: user-concurrency-db
