@@ -1,0 +1,15 @@
+﻿syntax = "proto3";
+option csharp_namespace = "UsersGrpc";
+
+service Users{
+	rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+}
+
+message CreateUserRequest{
+	string name = 1;
+	repeated int32 currenciesIds = 2;
+}
+
+message CreateUserResponse{
+
+}

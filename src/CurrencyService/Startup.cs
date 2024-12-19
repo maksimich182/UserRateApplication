@@ -1,10 +1,11 @@
-﻿using PostgresLib;
-using UsersService.BLL;
-using UsersService.DataAccess.Repositories.UsersCurrencyLinkRepository;
-using UsersService.DataAccess.Repositories.UsersRepository;
-using UsersService.GrpcService;
+﻿
 
-namespace UsersService;
+using CurrencyService.BLL;
+using CurrencyService.DataAccess.Repositories.CurrencyRepository;
+using CurrencyService.GrpcService;
+using PostgresLib;
+
+namespace CurrencyService;
 
 public class Startup
 {
@@ -31,9 +32,8 @@ public class Startup
         serviceCollection.AddSingleton<IPostgresConnectionFactory>(x =>
             new PostgresConnectionFactory(connectionString));
 
-        serviceCollection.AddScoped<IUsersCurrencyLinkRepository, UsersCurrencyLinkRepository>();
-        serviceCollection.AddScoped<IUsersRepository, UsersRepository>();
-        serviceCollection.AddScoped<IBllUsersService, BllUsersService>();
+        serviceCollection.AddScoped<ICurrencyRepository, CurrencyRepository>();
+        serviceCollection.AddScoped<IBllCurrencyService, BllCurrencyService>();
 
     }
 
@@ -44,9 +44,9 @@ public class Startup
         applicationBuilder.UseEndpoints(
             endpointRouteBuilder =>
             {
-                endpointRouteBuilder.MapGet("", () => "UsersService");
+                endpointRouteBuilder.MapGet("", () => "CurrencyService");
                 endpointRouteBuilder.MapGrpcReflectionService();
-                endpointRouteBuilder.MapGrpcService<GrpcUsersService>();
+                endpointRouteBuilder.MapGrpcService<GrpcCurrencyService>();
             });
     }
 }

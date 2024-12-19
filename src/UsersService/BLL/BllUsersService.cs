@@ -1,4 +1,5 @@
-﻿using UsersService.DataAccess.Repositories.Models;
+﻿using System.Transactions;
+using UsersService.DataAccess.Repositories.Models;
 using UsersService.DataAccess.Repositories.UsersCurrencyLinkRepository;
 using UsersService.DataAccess.Repositories.UsersRepository;
 
@@ -21,11 +22,24 @@ public class BllUsersService : IBllUsersService
     {
         token.ThrowIfCancellationRequested();
 
+        var transactionOptions = new TransactionOptions()
+        {
+            IsolationLevel = IsolationLevel.RepeatableRead,
+            Timeout = TimeSpan.FromMinutes(1)
+        };
+
+        using var transaction = new TransactionScope(
+            TransactionScopeOption.Required,
+            transactionOptions,
+            TransactionScopeAsyncFlowOption.Enabled);
+
         var newUserId = await _usersRepository.CreateUserAsync(user.Name, token);
 
         foreach(var currencyId in user.CurrenciesIds)
         {
             await _usersCurrencyLinkRepository.CreateUsersCurrencyLink(newUserId, currencyId, token);
         }
+
+        transaction.Complete();
     }
 }

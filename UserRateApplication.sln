@@ -20,6 +20,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PostgresLib", "src\Postgres
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsersService", "src\UsersService\UsersService.csproj", "{17F4B23B-FBA4-409D-9AC7-A7BD47DBE097}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyService", "src\CurrencyService\CurrencyService.csproj", "{154786CF-05E2-446E-BF68-E838E5427DFD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GatewayService", "src\GatewayService\GatewayService.csproj", "{4EC706C1-A2CE-469E-A579-B9965FBBDF83}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +46,14 @@ Global
 		{17F4B23B-FBA4-409D-9AC7-A7BD47DBE097}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17F4B23B-FBA4-409D-9AC7-A7BD47DBE097}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17F4B23B-FBA4-409D-9AC7-A7BD47DBE097}.Release|Any CPU.Build.0 = Release|Any CPU
+		{154786CF-05E2-446E-BF68-E838E5427DFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{154786CF-05E2-446E-BF68-E838E5427DFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{154786CF-05E2-446E-BF68-E838E5427DFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{154786CF-05E2-446E-BF68-E838E5427DFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EC706C1-A2CE-469E-A579-B9965FBBDF83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EC706C1-A2CE-469E-A579-B9965FBBDF83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EC706C1-A2CE-469E-A579-B9965FBBDF83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EC706C1-A2CE-469E-A579-B9965FBBDF83}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,6 +63,8 @@ Global
 		{D61126BC-0533-4E87-8684-6AFBD5950AD7} = {046CE512-5D52-487A-A779-422056995810}
 		{C1E05621-1C7B-4454-B5CA-F8625D3C2D0F} = {9AACB81E-C833-49CA-AA63-5272FAC37DF3}
 		{17F4B23B-FBA4-409D-9AC7-A7BD47DBE097} = {9AACB81E-C833-49CA-AA63-5272FAC37DF3}
+		{154786CF-05E2-446E-BF68-E838E5427DFD} = {9AACB81E-C833-49CA-AA63-5272FAC37DF3}
+		{4EC706C1-A2CE-469E-A579-B9965FBBDF83} = {9AACB81E-C833-49CA-AA63-5272FAC37DF3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2B2D8776-2456-468C-B254-8EB2E10FD29C}

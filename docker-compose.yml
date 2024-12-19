@@ -8,11 +8,11 @@ services:
   #       dockerfile: src/MigrationService/Dockerfile
   #   container_name: migration-service-migrator
   #   depends_on:
-  #       - user-concurrency-db
+  #       - user-currency-db
   #   ports:
   #       - "5081:8080"
   #   environment:
-  #     - ConnectionStrings:UserConcurrencyDb=Port=5432;Host=user-concurrency-db;Database=user-concurrency-db;Username=test;Password=test
+  #     - ConnectionStrings:UserCurrencyDb=Port=5432;Host=user-currency-db;Database=user-currency-db;Username=test;Password=test
   #   command: migrate up
 
   # migration-service-filler:
@@ -21,23 +21,23 @@ services:
   #       dockerfile: src/MigrationService/Dockerfile
   #   container_name: migration-service-filler
   #   depends_on:
-  #       - user-concurrency-db
+  #       - user-currency-db
   #   ports:
   #       - "5082:8080"
   #   environment:
-  #     - ConnectionStrings:UserConcurrencyDb=Port=5432;Host=user-concurrency-db;Database=user-concurrency-db;Username=test;Password=test
+  #     - ConnectionStrings:UserCurrencyDb=Port=5432;Host=user-currency-db;Database=user-currency-db;Username=test;Password=test
 
-  user-concurrency-db:
+  user-currency-db:
     image: postgres:latest
-    container_name: user-concurrency-db
+    container_name: user-currency-db
     environment:
-      - POSTGRES_DB=user-concurrency-db
+      - POSTGRES_DB=user-currency-db
       - POSTGRES_USER=test
       - POSTGRES_PASSWORD=test 
     ports:
       - "5181:5432"
     volumes:
-      - user-concurrency-db:/var/lib/postgresql/data
+      - user-currency-db:/var/lib/postgresql/data
   
   users-service:
     build:
@@ -45,13 +45,42 @@ services:
         dockerfile: src/UsersService/Dockerfile
     container_name: users-service
     depends_on:
-        - user-concurrency-db
+        - user-currency-db
     ports:
         - "5083:8080"
     environment:
-      - ConnectionStrings:UserConcurrencyDb=Port=5432;Host=user-concurrency-db;Database=user-concurrency-db;Username=test;Password=test
+      - GRPC_PORT=5005
+      - HTTP_PORT=5004
+      - ConnectionStrings:UserCurrencyDb=Port=5432;Host=user-currency-db;Database=user-currency-db;Username=test;Password=test
 
+  currency-service:
+    build:
+        context: .
+        dockerfile: src/CurrencyService/Dockerfile
+    container_name: currency-service
+    depends_on:
+        - user-currency-db
+    ports:
+        - "5084:8080"
+    environment:
+      - GRPC_PORT=5007
+      - HTTP_PORT=5006
+      - ConnectionStrings:UserCurrencyDb=Port=5432;Host=user-currency-db;Database=user-currency-db;Username=test;Password=test
+
+  gateway-service:
+    build:
+      context: .
+      dockerfile: src/GatewayService/Dockerfile
+    container_name: gateway-service
+    depends_on:
+      - users-service
+      - currency-service
+    ports: 
+      - "5085:8080"
+    environment:
+      - USERS_ADDRESS=http://users-service:5005
+      - CURRENCY_ADDRESS=http://currency-service:5007
 volumes:
 
-  user-concurrency-db:
-    name: user-concurrency-db
+  user-currency-db:
+    name: user-currency-db
