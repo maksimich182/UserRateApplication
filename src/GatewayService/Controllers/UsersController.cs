@@ -32,6 +32,8 @@ public class UsersController : Controller
         [FromQuery] int[] currenciesIds, 
         CancellationToken token)
     {
+        token.ThrowIfCancellationRequested();
+
         var user = new UserModel { Name = name, CurrenciesIds = currenciesIds };
         await _usersProvider.CreateUser(user, token);
         return Ok();

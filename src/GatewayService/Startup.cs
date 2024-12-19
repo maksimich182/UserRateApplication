@@ -1,4 +1,5 @@
-﻿using GatewayService.Providers.Users;
+﻿using GatewayService.Providers.Currency;
+using GatewayService.Providers.Users;
 using System.Reflection;
 
 namespace GatewayService;
@@ -40,6 +41,7 @@ public class Startup
 
 
         serviceCollection.AddScoped<IUsersProvider, UsersProvider>();
+        serviceCollection.AddScoped<ICurrencyProvider, CurrencyProvider>();
 
         serviceCollection.AddControllers();
         serviceCollection.AddEndpointsApiExplorer();

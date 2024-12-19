@@ -14,6 +14,8 @@ public class UsersProvider : IUsersProvider
 
     public async Task CreateUser(UserModel user, CancellationToken token)
     {
+        token.ThrowIfCancellationRequested();
+
         var request = new CreateUserRequest()
         {
             Name = user.Name,

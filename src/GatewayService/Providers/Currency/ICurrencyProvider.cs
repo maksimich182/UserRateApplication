@@ -1,6 +1,8 @@
-﻿namespace GatewayService.Providers.Currency;
+﻿using CurrencyGrpc;
+
+namespace GatewayService.Providers.Currency;
 
 public interface ICurrencyProvider
 {
-    Task GetUserCurrencyById(int id, CancellationToken token);
+    Task<Models.CurrencyModel[]> GetUserCurrencyById(int id, CancellationToken token);
 }
