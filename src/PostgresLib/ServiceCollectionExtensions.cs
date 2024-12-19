@@ -3,7 +3,7 @@ using FluentMigrator.Runner.Processors;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-namespace Ozon.Route256.Practice.OrdersService.DataAccess.Postgres.Common.Single;
+namespace PostgresLib;
 
 public static class ServiceCollectionExtensions
 {

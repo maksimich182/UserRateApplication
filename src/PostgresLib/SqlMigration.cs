@@ -2,7 +2,7 @@
 using FluentMigrator.Expressions;
 using FluentMigrator.Infrastructure;
 
-namespace Ozon.Route256.Practice.OrdersService.DataAccess.Postgres.Common.Single;
+namespace PostgresLib;
 
 public abstract class SqlMigration : IMigration
 {

@@ -15,17 +15,17 @@ services:
   #     - ConnectionStrings:UserConcurrencyDb=Port=5432;Host=user-concurrency-db;Database=user-concurrency-db;Username=test;Password=test
   #   command: migrate up
 
-  migration-service-filler:
-    build:
-        context: .
-        dockerfile: src/MigrationService/Dockerfile
-    container_name: migration-service-filler
-    depends_on:
-        - user-concurrency-db
-    ports:
-        - "5081:8080"
-    environment:
-      - ConnectionStrings:UserConcurrencyDb=Port=5432;Host=user-concurrency-db;Database=user-concurrency-db;Username=test;Password=test
+  # migration-service-filler:
+  #   build:
+  #       context: .
+  #       dockerfile: src/MigrationService/Dockerfile
+  #   container_name: migration-service-filler
+  #   depends_on:
+  #       - user-concurrency-db
+  #   ports:
+  #       - "5082:8080"
+  #   environment:
+  #     - ConnectionStrings:UserConcurrencyDb=Port=5432;Host=user-concurrency-db;Database=user-concurrency-db;Username=test;Password=test
 
   user-concurrency-db:
     image: postgres:latest
@@ -38,6 +38,18 @@ services:
       - "5181:5432"
     volumes:
       - user-concurrency-db:/var/lib/postgresql/data
+  
+  users-service:
+    build:
+        context: .
+        dockerfile: src/UsersService/Dockerfile
+    container_name: users-service
+    depends_on:
+        - user-concurrency-db
+    ports:
+        - "5083:8080"
+    environment:
+      - ConnectionStrings:UserConcurrencyDb=Port=5432;Host=user-concurrency-db;Database=user-concurrency-db;Username=test;Password=test
 
 volumes:
 

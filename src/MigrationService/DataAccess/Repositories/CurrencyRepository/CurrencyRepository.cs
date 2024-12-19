@@ -1,7 +1,6 @@
 ﻿using Dapper;
 using MigrationService.DataAccess.Models;
-using Npgsql;
-using Ozon.Route256.Practice.OrdersService.DataAccess.Postgres.Common.Single;
+using PostgresLib;
 
 namespace MigrationService.DataAccess.Repositories.CurrencyRepository;
 

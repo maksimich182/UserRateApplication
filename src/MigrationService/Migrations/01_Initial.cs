@@ -1,5 +1,5 @@
 ﻿using FluentMigrator;
-using Ozon.Route256.Practice.OrdersService.DataAccess.Postgres.Common.Single;
+using PostgresLib;
 
 namespace MigrationService.Migrations;
 
@@ -8,6 +8,7 @@ public class Initial : SqlMigration
 {
     protected override string GetDownSql(IServiceProvider services)
         => """
+            drop table if exists users_currency_link;
             drop table if exists currency;
             drop table if exists users;
         """;
@@ -23,6 +24,12 @@ public class Initial : SqlMigration
         create table if not exists users(
             id serial primary key,
             name text
+        );
+
+        create table if not exists users_currency_link(
+            id serial primary key,
+            user_id integer references users(id) not null,
+            currency_id integer references currency(id) not null
         );
         """;
 }

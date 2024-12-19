@@ -4,10 +4,12 @@
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "GRPC_PORT": "5005",
+        "HTTP_PORT": "5004"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "http://localhost:5298"
+      "applicationUrl": "http://localhost:5261"
     },
     "IIS Express": {
       "commandName": "IISExpress",
@@ -24,13 +26,6 @@
         "ASPNETCORE_HTTP_PORTS": "8080"
       },
       "publishAllPorts": true
-    },
-    "migrator": {
-      "commandName": "Project",
-      "commandLineArgs": "migrate up",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
     }
   },
   "$schema": "http://json.schemastore.org/launchsettings.json",
@@ -38,7 +33,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:30928",
+      "applicationUrl": "http://localhost:33493",
       "sslPort": 0
     }
   }

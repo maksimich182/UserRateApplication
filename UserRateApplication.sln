@@ -12,11 +12,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{046CE5
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9AACB81E-C833-49CA-AA63-5272FAC37DF3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MigrationService", "src\MigrationService\MigrationService.csproj", "{05328EC7-DB50-42E2-80FE-786E5C4B3887}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MigrationService", "src\MigrationService\MigrationService.csproj", "{05328EC7-DB50-42E2-80FE-786E5C4B3887}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{D61126BC-0533-4E87-8684-6AFBD5950AD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostgresLib", "src\PostgresLib\PostgresLib.csproj", "{C1E05621-1C7B-4454-B5CA-F8625D3C2D0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PostgresLib", "src\PostgresLib\PostgresLib.csproj", "{C1E05621-1C7B-4454-B5CA-F8625D3C2D0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsersService", "src\UsersService\UsersService.csproj", "{17F4B23B-FBA4-409D-9AC7-A7BD47DBE097}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +38,10 @@ Global
 		{C1E05621-1C7B-4454-B5CA-F8625D3C2D0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1E05621-1C7B-4454-B5CA-F8625D3C2D0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1E05621-1C7B-4454-B5CA-F8625D3C2D0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17F4B23B-FBA4-409D-9AC7-A7BD47DBE097}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17F4B23B-FBA4-409D-9AC7-A7BD47DBE097}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17F4B23B-FBA4-409D-9AC7-A7BD47DBE097}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17F4B23B-FBA4-409D-9AC7-A7BD47DBE097}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +50,7 @@ Global
 		{05328EC7-DB50-42E2-80FE-786E5C4B3887} = {9AACB81E-C833-49CA-AA63-5272FAC37DF3}
 		{D61126BC-0533-4E87-8684-6AFBD5950AD7} = {046CE512-5D52-487A-A779-422056995810}
 		{C1E05621-1C7B-4454-B5CA-F8625D3C2D0F} = {9AACB81E-C833-49CA-AA63-5272FAC37DF3}
+		{17F4B23B-FBA4-409D-9AC7-A7BD47DBE097} = {9AACB81E-C833-49CA-AA63-5272FAC37DF3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2B2D8776-2456-468C-B254-8EB2E10FD29C}

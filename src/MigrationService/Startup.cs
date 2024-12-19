@@ -1,6 +1,6 @@
 ﻿using MigrationService.BackgroundJobs;
 using MigrationService.DataAccess.Repositories.CurrencyRepository;
-using Ozon.Route256.Practice.OrdersService.DataAccess.Postgres.Common.Single;
+using PostgresLib;
 using System.Reflection;
 
 namespace MigrationService;
@@ -18,7 +18,6 @@ public class Startup
     {
         services.AddSingleton<ICurrencyRepository, CurrencyRepository>();
 
-        services.AddEndpointsApiExplorer();
         services.AddHostedService<CurrencyFiller>();
 
         var connectionString = _configuration.GetConnectionString("UserConcurrencyDb");
@@ -34,11 +33,6 @@ public class Startup
 
     public void Configure(IApplicationBuilder applicationBuilder)
     {
-        applicationBuilder.UseRouting();
-        applicationBuilder.UseEndpoints(
-            endpointRouteBuilder =>
-            {
-                endpointRouteBuilder.MapGet("", () => "MigrationService");
-            });
+
     }
 }
