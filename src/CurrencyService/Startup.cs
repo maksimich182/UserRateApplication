@@ -44,7 +44,6 @@ public class Startup
         applicationBuilder.UseEndpoints(
             endpointRouteBuilder =>
             {
-                endpointRouteBuilder.MapGet("", () => "CurrencyService");
                 endpointRouteBuilder.MapGrpcReflectionService();
                 endpointRouteBuilder.MapGrpcService<GrpcCurrencyService>();
             });

@@ -44,7 +44,6 @@ public class Startup
         applicationBuilder.UseEndpoints(
             endpointRouteBuilder =>
             {
-                endpointRouteBuilder.MapGet("", () => "UsersService");
                 endpointRouteBuilder.MapGrpcReflectionService();
                 endpointRouteBuilder.MapGrpcService<GrpcUsersService>();
             });

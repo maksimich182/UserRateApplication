@@ -1,4 +1,5 @@
 ﻿using GatewayService.Providers.Currency;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GatewayService.Controllers;
@@ -6,6 +7,7 @@ namespace GatewayService.Controllers;
 /// <summary>
 /// Контроллер для взаимодействия с CurrencyService
 /// </summary>
+[Authorize(Roles = "admin")]
 [Route("currency")]
 [ApiController]
 public class CurrencyController : Controller
@@ -25,6 +27,7 @@ public class CurrencyController : Controller
     /// <returns>Курсы валют</returns>
     [HttpGet]
     [Route("{userId}/currencies")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> GetUserCurrencyById(int userId, CancellationToken token)
     {
         token.ThrowIfCancellationRequested();

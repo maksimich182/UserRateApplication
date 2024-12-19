@@ -1,5 +1,6 @@
 ﻿using GatewayService.Providers.Users;
 using GatewayService.Providers.Users.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GatewayService.Controllers;
@@ -7,6 +8,7 @@ namespace GatewayService.Controllers;
 /// <summary>
 /// Контроллер для взаимодействия с UsersService
 /// </summary>
+[Authorize(Roles = "admin")]
 [Route("users")]
 [ApiController]
 public class UsersController : Controller
