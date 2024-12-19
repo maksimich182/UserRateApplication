@@ -1,6 +1,4 @@
-﻿using UsersService.DataAccess.Repositories.Models;
-
-namespace UsersService.DataAccess.Repositories.UsersRepository;
+﻿namespace UsersService.DataAccess.Repositories.UsersRepository;
 
 public interface IUsersRepository
 {

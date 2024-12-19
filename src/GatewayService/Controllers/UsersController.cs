@@ -30,8 +30,8 @@ public class UsersController : Controller
     [Route("{name}/create")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> CreateUser(
-        string name, 
-        [FromQuery] int[] currenciesIds, 
+        string name,
+        [FromQuery] int[] currenciesIds,
         CancellationToken token)
     {
         token.ThrowIfCancellationRequested();

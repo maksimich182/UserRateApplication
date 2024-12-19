@@ -28,8 +28,8 @@ public class TokenController : Controller
     [Route("{username}/create")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public IActionResult CreateToken(
-        string username, 
-        [FromBody]string password)
+        string username,
+        [FromBody] string password)
     {
         var identity = GetIdentity(username, password);
         if (identity == null)
@@ -38,7 +38,7 @@ public class TokenController : Controller
         }
 
         var now = DateTime.UtcNow;
-        
+
         var jwt = new JwtSecurityToken(
                 issuer: AuthOptions.ISSUER,
                 audience: AuthOptions.AUDIENCE,

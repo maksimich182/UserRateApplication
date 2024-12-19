@@ -5,9 +5,9 @@ namespace GatewayService.JWT;
 
 public class AuthOptions
 {
-    public const string ISSUER = "MyServer"; 
-    public const string AUDIENCE = "MyClient"; 
-    const string KEY = "secretkeysecretkeysecretkeysecretkey";   
+    public const string ISSUER = "MyServer";
+    public const string AUDIENCE = "MyClient";
+    const string KEY = "secretkeysecretkeysecretkeysecretkey";
     public const int LIFETIME = 1;
     public static SymmetricSecurityKey GetSymmetricSecurityKey()
     {

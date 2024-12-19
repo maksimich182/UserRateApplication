@@ -11,7 +11,7 @@ public class BllUsersService : IBllUsersService
     private readonly IUsersCurrencyLinkRepository _usersCurrencyLinkRepository;
 
     public BllUsersService(
-        IUsersRepository usersRepository, 
+        IUsersRepository usersRepository,
         IUsersCurrencyLinkRepository usersCurrencyLinkRepository)
     {
         _usersRepository = usersRepository;
@@ -35,7 +35,7 @@ public class BllUsersService : IBllUsersService
 
         var newUserId = await _usersRepository.CreateUserAsync(user.Name, token);
 
-        foreach(var currencyId in user.CurrenciesIds)
+        foreach (var currencyId in user.CurrenciesIds)
         {
             await _usersCurrencyLinkRepository.CreateUsersCurrencyLink(newUserId, currencyId, token);
         }

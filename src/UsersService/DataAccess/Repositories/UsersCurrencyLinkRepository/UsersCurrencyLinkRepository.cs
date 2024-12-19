@@ -1,8 +1,5 @@
-﻿
-using Dapper;
-using Microsoft.AspNetCore.Http.HttpResults;
+﻿using Dapper;
 using PostgresLib;
-using System.Security.Cryptography.Xml;
 
 namespace UsersService.DataAccess.Repositories.UsersCurrencyLinkRepository;
 

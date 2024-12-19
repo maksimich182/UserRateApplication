@@ -1,6 +1,6 @@
-﻿using Grpc.Core;
-using CurrencyGrpc;
+﻿using CurrencyGrpc;
 using CurrencyService.BLL;
+using Grpc.Core;
 
 namespace CurrencyService.GrpcService;
 
@@ -14,7 +14,7 @@ public class GrpcCurrencyService : Currency.CurrencyBase
     }
 
     public override async Task<GetUserCurrencyByIdResponse> GetUserCurrencyById(
-        GetUserCurrencyByIdRequest request, 
+        GetUserCurrencyByIdRequest request,
         ServerCallContext context)
     {
         var currencies = await _bllCurrencyService.GetUserCurrenciesById(request.UserId, context.CancellationToken);

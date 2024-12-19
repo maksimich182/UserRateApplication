@@ -24,7 +24,7 @@ public class CurrencyFiller : BackgroundService
         XmlTextReader xmlReader = new XmlTextReader(DATA_ADDRESS);
         ParseXmlCurrency(xmlReader);
 
-        foreach(var currency in _storage)
+        foreach (var currency in _storage)
         {
             await _currencyRepository.CreateCurrencyAsync(currency);
         }

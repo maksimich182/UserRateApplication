@@ -1,6 +1,4 @@
-﻿using CurrencyGrpc;
-
-namespace GatewayService.Providers.Currency;
+﻿namespace GatewayService.Providers.Currency;
 
 public interface ICurrencyProvider
 {

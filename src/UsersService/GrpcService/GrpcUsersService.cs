@@ -17,11 +17,11 @@ public class GrpcUsersService : Users.UsersBase
     public override async Task<CreateUserResponse> CreateUser(CreateUserRequest request, ServerCallContext context)
     {
         await _bllUsersService.CreateUser(
-            new UserModel 
-            { 
-                Name = request.Name, 
-                CurrenciesIds = request.CurrenciesIds.ToArray() 
-            }, 
+            new UserModel
+            {
+                Name = request.Name,
+                CurrenciesIds = request.CurrenciesIds.ToArray()
+            },
             context.CancellationToken);
 
         return new CreateUserResponse { };
